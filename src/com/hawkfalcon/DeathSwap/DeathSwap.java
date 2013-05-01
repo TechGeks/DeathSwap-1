@@ -17,6 +17,7 @@ public class DeathSwap extends JavaPlugin {
     public Start start = new Start(this);
     public Stop stop = new Stop(this);
     public Swap sw = new Swap(this);
+    public Stats stats = new Stats(this);
 
     public CommandExecutor Commands = new Commands(this);
     public Listener Lobby = new Protect(this);
@@ -37,6 +38,9 @@ public class DeathSwap extends JavaPlugin {
         if(!f.exists()) {
             saveDefaultConfig();
         }
+        
+        stats.conf.setup();
+        
         getServer().getPluginManager().registerEvents(Lobby, this);
         getServer().getPluginManager().registerEvents(Death, this);
         getCommand("ds").setExecutor(Commands);
